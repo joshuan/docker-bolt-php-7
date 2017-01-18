@@ -5,7 +5,8 @@ RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends apt-utils
 RUN docker-php-ext-install pdo_mysql
 
-RUN apt-get install -y --no-install-recommends libpng-dev
+RUN apt-get install -y --no-install-recommends libpng-dev libfreetype6-dev libjpeg62-turbo-dev libpng12-dev libxpm-dev libvpx-dev
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/x86_64-linux-gnu/ --with-jpeg-dir=/usr/lib/x86_64-linux-gnu/ --with-xpm-dir=/usr/lib/x86_64-linux-gnu/ --with-vpx-dir=/usr/lib/x86_64-linux-gnu/
 RUN docker-php-ext-install gd
 
 RUN apt-get install -y --no-install-recommends libgmp-dev libgmp3-dev
