@@ -1,0 +1,26 @@
+FROM php:7.0-fpm
+
+RUN apt-get update -y
+
+RUN apt-get install -y --no-install-recommends apt-utils
+RUN docker-php-ext-install pdo_mysql
+
+RUN apt-get install -y --no-install-recommends libpng-dev
+RUN docker-php-ext-install gd
+
+RUN apt-get install -y --no-install-recommends libgmp-dev libgmp3-dev
+RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
+RUN docker-php-ext-install gmp
+
+RUN docker-php-ext-install json
+
+RUN docker-php-ext-install mbstring
+
+RUN docker-php-ext-install posix
+
+RUN apt-get install -y --no-install-recommends libxml2-dev
+RUN docker-php-ext-install xml
+
+RUN docker-php-ext-install fileinfo
+
+RUN docker-php-ext-install exif
