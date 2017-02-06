@@ -30,3 +30,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN rm composer-setup.php
 RUN mv composer.phar /usr/local/bin/composer.phar
+
+RUN apt-get install -y git
+
+RUN rm -rf /var/lib/apt/lists/* 
